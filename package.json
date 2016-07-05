@@ -1,0 +1,12 @@
+{
+  "name": "website-optimization",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^1.4.0",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-responsive-images": "^0.1.9",
+    "imagemin-mozjpeg": "^6.0.0"
+  }
+}

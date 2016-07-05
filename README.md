@@ -1,3 +1,32 @@
+# Using Grunt to automate
+* Create a basic package.json file with the following:
+
+<pre>{
+  "name": "website-optimization",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}</pre>
+
+* Run <code>npm install</code> inside the directory.
+* Install cssmin with <code>npm install grunt-contrib-cssmin --save-dev</code>
+* Install purifycss with <code>npm install grunt-purifycss --save-dev</code>
+* Install htmlmin with <code>npm install grunt-contrib-htmlmin --save-dev</code>
+* Install uglify with <code>npm install grunt-contrib-uglify --save-dev</code>
+* Install responsive-images with <code>npm install grunt-responsive-images --save-dev</code>
+* Install imagemin with <code>npm install grunt-contrib-imagemin --save-dev</code>
+* See <code>Gruntfile.js</code> for setup for each task.
+* Run <code>grunt</code> to run the Grunt script.
+
+
+
+
+# Steps taken to optimize <code>index.html</code>
+* Add <code>media="print"</code> to the <code><link href="css/print.css"></code>
+* Remove the link to the Open Sans font (not needed)
+* Resize <code>pizzeria.jpg</code> to 720x540 and compress all images using grunt-contrib-imagemin
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
@@ -32,7 +61,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
