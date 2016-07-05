@@ -1,3 +1,5 @@
+# [Part 1 Website](https://mkuehn10.github.io/portfolio/optimize/)
+
 # Using Grunt to automate
 * Create a basic package.json file with the following:
 
@@ -19,13 +21,22 @@
 * See <code>Gruntfile.js</code> for setup for each task.
 * Run <code>grunt</code> to run the Grunt script.
 
-
-
-
 # Steps taken to optimize <code>index.html</code>
 * Add <code>media="print"</code> to the <code><link href="css/print.css"></code>
 * Remove the link to the Open Sans font (not needed)
-* Resize <code>pizzeria.jpg</code> to 720x540 and compress all images using grunt-contrib-imagemin
+* Resize <code>pizzeria.jpg</code> to a width of 100 and compress all images using grunt-contrib-imagemin
+* Purify css to ensure that there is no unneeded css
+* Minify css files using grunt-contrib-cssmin
+* Clean up style.css (several body selectors combined)
+* Add inline css and defer loading the rest of the css
+
+
+
+
+
+
+
+
 
 ## Website Performance Optimization portfolio project
 

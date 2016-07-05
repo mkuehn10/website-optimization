@@ -1,0 +1,74 @@
+a {
+  color: #12C;
+}
+
+a:visited {
+  color: #61C;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover,a:active {
+  color: #c00;
+  outline: 0;
+}
+
+b,strong {
+  font-weight: bold;
+}
+
+ul {
+  margin: 1em 0;
+  padding: 0 0 0 20px;
+}
+
+.hero {
+  padding: 2em;
+  background-color: #f8f8f8;
+  font-size: 1.2em;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+.content {
+  padding: 1em 1em;
+}
+
+.content li {
+  list-style-type: none;
+  font-size: 1.1em;
+}
+
+li img {
+  float: left;
+  padding-right: 1em;
+}
+
+li p {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+footer {
+  padding: 0 0.5em;
+  border-top: 1px solid #ccc;
+}
+
+footer span {
+  float: right;
+  font-style: italic;
+}
+
+/* Smartphones (portrait) */
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  header p {
+    padding-left: 4.5em;
+  }
+}
