@@ -492,12 +492,12 @@ var resizePizzas = function(size) {
 };
 
 window.performance.mark("mark_start_generating"); // collect timing data
-
+var pizzasDiv = document.getElementById("randomPizzas");
 // This for-loop actually creates and appends all of the pizzas when the page loads
 for (var i = 2; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
+
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
 window.performance.mark("mark_end_generating");
@@ -531,9 +531,16 @@ function updatePositions() {
     // Read the scrollTop first
     var scrollTop = document.body.scrollTop;
     var items = document.getElementsByClassName('mover');
-    for (var i = 0; i < items.length; i++) {
-        var phase = Math.sin((scrollTop / 1250) + (i % 5));
-        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    var phase = [];
+
+    for (var i = 0; i < 5; i++) {
+        phase.push(Math.sin(scrollTop / 1250 + i) * 100);
+    }
+
+    for (var j = 0; j < items.length; j++) {
+        //var phase = Math.sin((scrollTop / 1250) + (i % 5));
+        //items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+        items[j].style.left = items[j].basicLeft + phase[j % 5] + 'px';
     }
 
     // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -553,7 +560,10 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
-    for (var i = 0; i < 200; i++) {
+    // Only create moving pizzas based on the innenHeight of the window
+    var numPizzas = (window.innerHeight / 125) * 5;
+    console.log(numPizzas);
+    for (var i = 0; i < numPizzas; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";

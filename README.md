@@ -49,7 +49,8 @@ variables only need to be calculated once for the first pizza in the array.  The
 using a document selector instead of selecting all the elements every time for every for loop.  The time to
 resize pizzas is now well under 5ms and is actually under 1ms based on these changes.
 I also calculated the length of the array prior to the for loop instead of the loop
-having to calculate it each iteration.
+having to calculate it each iteration.  The innerHeight of the window was used to determine how many
+animated pizzas needed to be drawn.
 
 ## Other changes
 * Removed the capitalize function and added a <code>text-transform: capitalize</code> into the css
