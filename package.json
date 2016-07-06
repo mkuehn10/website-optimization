@@ -7,7 +7,6 @@
     "grunt-contrib-htmlmin": "^1.4.0",
     "grunt-contrib-imagemin": "^1.0.1",
     "grunt-purifycss": "^0.1.1",
-    "grunt-responsive-images": "^0.1.9",
-    "imagemin-mozjpeg": "^6.0.0"
+    "grunt-responsive-images": "^0.1.9"
   }
 }

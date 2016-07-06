@@ -7,7 +7,12 @@
   "name": "website-optimization",
   "version": "0.1.0",
   "devDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^1.4.0",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-purifycss": "^0.1.1",
+    "grunt-responsive-images": "^0.1.9"
   }
 }</pre>
 
@@ -15,29 +20,48 @@
 * Install cssmin with <code>npm install grunt-contrib-cssmin --save-dev</code>
 * Install purifycss with <code>npm install grunt-purifycss --save-dev</code>
 * Install htmlmin with <code>npm install grunt-contrib-htmlmin --save-dev</code>
-* Install uglify with <code>npm install grunt-contrib-uglify --save-dev</code>
 * Install responsive-images with <code>npm install grunt-responsive-images --save-dev</code>
 * Install imagemin with <code>npm install grunt-contrib-imagemin --save-dev</code>
 * See <code>Gruntfile.js</code> for setup for each task.
 * Run <code>grunt</code> to run the Grunt script.
 
 # Steps taken to optimize <code>index.html</code>
-* Add <code>media="print"</code> to the <code><link href="css/print.css"></code>
+* Add <code>media="print"</code> to the <code>css/print.css</code> link
 * Remove the link to the Open Sans font (not needed)
 * Resize <code>pizzeria.jpg</code> to a width of 100 and compress all images using grunt-contrib-imagemin
 * Purify css to ensure that there is no unneeded css
 * Minify css files using grunt-contrib-cssmin
 * Clean up style.css (several body selectors combined)
 * Add inline css and defer loading the rest of the css
+* Use htmlmin to minify HTML
+
+# [Part 2 Website](https://mkuehn10.github.io/portfolio/optimize/views/pizza.html)
+
+## Frame Rate
+The <code>updatePositions</code> function was updated to read the document's scrollTop property
+fewer times.  This was causing the animation to update in very quick succession for no reason.
+Guidance on [avoiding layout thrashing](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-layout-thrashing) was found on the Google Developers site.
+
+## Computational Efficiency in resizing pizzas
+The <code>changePizzaSizes</code> function contained a lot of unncessary computations for every single
+random pizza on the page.  Since the pizzas are all the same size, the <code>dx</code> and <code>newwidth</code>
+variables only need to be calculated once for the first pizza in the array.  The array was also generated once
+using a document selector instead of selecting all the elements every time for every for loop.  The time to
+resize pizzas is now well under 5ms and is actually under 1ms based on these changes.
+I also calculated the length of the array prior to the for loop instead of the loop
+having to calculate it each iteration.
+
+## Other changes
+* Removed the capitalize function and added a <code>text-transform: capitalize</code> into the css
+for all <code>h4</code> elements.
+* <code>document.querySelector</code> was replaced by <code>document.getElementbyID</code>
+or <code>document.getElementsbyClassName</code> where applicable
+based on information contained [here](http://stackoverflow.com/questions/26848289/javascript-queryselector-vs-getelementbyid).
+* Minified the html, css, and js for the pizza site
 
 
 
-
-
-
-
-
-
+# Project Instructions
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
