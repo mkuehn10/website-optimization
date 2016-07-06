@@ -16,35 +16,35 @@
   }
 }</pre>
 
-* Run <code>npm install</code> inside the directory.
-* Install cssmin with <code>npm install grunt-contrib-cssmin --save-dev</code>
-* Install purifycss with <code>npm install grunt-purifycss --save-dev</code>
-* Install htmlmin with <code>npm install grunt-contrib-htmlmin --save-dev</code>
-* Install responsive-images with <code>npm install grunt-responsive-images --save-dev</code>
-* Install imagemin with <code>npm install grunt-contrib-imagemin --save-dev</code>
-* See <code>Gruntfile.js</code> for setup for each task.
-* Run <code>grunt</code> to run the Grunt script.
+* Run `npm install` inside the directory.
+* Install cssmin with `npm install grunt-contrib-cssmin --save-dev`
+* Install purifycss with `npm install grunt-purifycss --save-dev`
+* Install htmlmin with `npm install grunt-contrib-htmlmin --save-dev`
+* Install responsive-images with `npm install grunt-responsive-images --save-dev`
+* Install imagemin with `npm install grunt-contrib-imagemin --save-dev`
+* See `Gruntfile.js` for setup for each task.
+* Run `grunt` to run the Grunt script.
 
-# Steps taken to optimize <code>index.html</code>
-* Add <code>media="print"</code> to the <code>css/print.css</code> link
+# Steps taken to optimize `index.html`
+* Add `media="print"` to the `css/print.css` link
 * Remove the link to the Open Sans font (not needed)
-* Resize <code>pizzeria.jpg</code> to a width of 100 and compress all images using grunt-contrib-imagemin
+* Resize `pizzeria.jpg` to a width of 100 and compress all images using grunt-contrib-imagemin
 * Purify css to ensure that there is no unneeded css
 * Minify css files using grunt-contrib-cssmin
-* Clean up style.css (several body selectors combined)
+* Clean up `style.css` (several body selectors combined)
 * Add inline css and defer loading the rest of the css
 * Use htmlmin to minify HTML
 
 # [Part 2 Website](https://mkuehn10.github.io/portfolio/optimize/views/pizza.html)
 
 ## Frame Rate
-The <code>updatePositions</code> function was updated to read the document's scrollTop property
+The `updatePositions` function was updated to read the document's scrollTop property
 fewer times.  This was causing the animation to update in very quick succession for no reason.
 Guidance on [avoiding layout thrashing](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-layout-thrashing) was found on the Google Developers site.
 
 ## Computational Efficiency in resizing pizzas
-The <code>changePizzaSizes</code> function contained a lot of unncessary computations for every single
-random pizza on the page.  Since the pizzas are all the same size, the <code>dx</code> and <code>newwidth</code>
+The `changePizzaSizes` function contained a lot of unncessary computations for every single
+random pizza on the page.  Since the pizzas are all the same size, the `dx` and `newwidth`
 variables only need to be calculated once for the first pizza in the array.  The array was also generated once
 using a document selector instead of selecting all the elements every time for every for loop.  The time to
 resize pizzas is now well under 5ms and is actually under 1ms based on these changes.
@@ -53,12 +53,13 @@ having to calculate it each iteration.  The innerHeight of the window was used t
 animated pizzas needed to be drawn.
 
 ## Other changes
-* Removed the capitalize function and added a <code>text-transform: capitalize</code> into the css
-for all <code>h4</code> elements.
-* <code>document.querySelector</code> was replaced by <code>document.getElementbyID</code>
-or <code>document.getElementsbyClassName</code> where applicable
+* Removed the capitalize function and added a `text-transform: capitalize` into the css
+for all `h4` elements.
+* `document.querySelector` was replaced by `document.getElementbyID`
+or `document.getElementsbyClassName` where applicable
 based on information contained [here](http://stackoverflow.com/questions/26848289/javascript-queryselector-vs-getelementbyid).
 * Minified the html, css, and js for the pizza site
+* Used `document.createDocumentFragment` to add the pizzas/toppings and animated pizzas to the page.
 
 
 
